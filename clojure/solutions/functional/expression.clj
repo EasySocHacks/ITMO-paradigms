@@ -7,7 +7,7 @@
 (def subtract (commonOperation -))
 (def multiply (commonOperation *))
 (def divide (commonOperation (fn [a b] (/ (double a) (double b)))))
-(def negate (commonOperation (fn [x] (- 0 x))))
+(def negate (commonOperation (fn [x] (- x))))
 
 (def getOperation {
     '+ add '- subtract '* multiply '/ divide 'negate negate
