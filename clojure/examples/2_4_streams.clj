@@ -26,7 +26,7 @@
            (if (empty? stream)
              empty
              (cons (f (first stream)) (delay (map f (rest stream))))))
-         (defn filter [f    stream]
+         (defn filter [f stream]
            (if (empty? stream)
              empty
              (let [head (first stream)

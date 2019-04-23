@@ -32,7 +32,7 @@
                  (== 0 n) 1
                  (== 1 n) 1
                  :else (+ (mem-fib (- n 1)) (mem-fib (- n 2)))))))
-         (mem-fib 90))(d)
+         (mem-fib 90))
 (example "Tail-recursive Fibonacci"
          (defn iter-fib [n]
            (letf[(iter-fib' [n a b]
