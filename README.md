@@ -10,6 +10,11 @@
     * Код должен находиться в файле `expression.clj`.
     * [Исходный код тестов](clojure/cljtest/object/ClojureObjectExpressionTest.java)
         * Запускать c аргументом `easy` или `hard`
+ * *Модификация SquareSqrt*. Дополнительно реализовать поддержку:
+    * унарных операций:
+        * `Square` (`square`) — возведение в квадрат, `(square 3)` равно 9;
+        * `Sqrt` (`sqrt`) — извлечение квадратного корня из модуля аргумента, `(sqrt -9)` равно 3.
+    * [Исходный код тестов](clojure/cljtest/object/ClojureObjectSquareSqrtTest.java)
 
 
 ## Домашнее задание 8. Функциональные выражения на Clojure
@@ -113,6 +118,12 @@
  * [Порядки вычислений](clojure/examples/2_3_evaluation-orders.clj)
  * [Потоки](clojure/examples/2_4_streams.clj)
  * [Отображения и множества](clojure/examples/2_5_maps.clj)
+
+Лекция 3. Объекты и вычисления
+ * [Прототипное наследование](clojure/examples/3_1_js-objects.clj)
+ * [Классы](clojure/examples/3_2_java-objects.clj)
+ * [Изменяемое состояние](clojure/examples/3_3_mutable-state.clj)
+ * [Числа Чёрча](clojure/examples/3_4_church.clj)
 
 
 ## Домашнее задание 6. Обработка ошибок на JavaScript
