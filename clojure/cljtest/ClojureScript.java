@@ -12,8 +12,22 @@ import java.util.stream.Collectors;
  * @author Georgiy Korneev (kgeorgiy@kgeorgiy.info)
  */
 public class ClojureScript {
+    public static final IFn LOAD_STRING = var("clojure.core/load-string");
+    public static final IFn LOAD_FILE = asUser("load-file");
+    public static final IFn LOAD_STRING_IN = asUser("load-string");
+
+    private static IFn asUser(final String function) {
+        return (IFn) LOAD_STRING.invoke(
+                "(fn " + function +  "-in [arg]" +
+                        "  (binding [*ns* *ns*]" +
+                        "    (in-ns 'user)" +
+                        "    (" + function + " arg)))"
+        );
+    }
+
     public static void loadScript(final String script) {
-        Clojure.var("clojure.core", "load-file").invoke(script);
+        LOAD_STRING.invoke("(println *ns*)");
+        LOAD_FILE.invoke(script);
     }
 
     protected static <T> Engine.Result<T> call(final IFn f, final Object[] args, final Class<T> type, final String context) {
@@ -70,9 +84,9 @@ public class ClojureScript {
         private final IFn f;
 
         public F(final String name, final Class<T> type) {
-            this.name = name;
+            this.name = name.substring(name.indexOf("/") + 1);
             this.type = type;
-            f = Clojure.var("clojure.core", name);
+            f = var(name);
         }
 
         public Engine.Result<T> call(final Engine.Result<?>... args) {
@@ -91,5 +105,10 @@ public class ClojureScript {
                     "(" + name + " " + Arrays.stream(args).map(arg -> arg.value.toString()).collect(Collectors.joining(" ")) + ")"
             );
         }
+    }
+
+    public static IFn var(final String name) {
+        final String qualifiedName = (name.contains("/") ? "" : "user/") + name;
+        return Clojure.var(qualifiedName);
     }
 }

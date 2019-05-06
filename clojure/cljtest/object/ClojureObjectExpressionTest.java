@@ -1,7 +1,8 @@
 package cljtest.object;
 
-import cljtest.multi.MultiTests;
+import cljtest.ClojureScript;
 import cljtest.functional.ClojureFunctionalExpressionTest;
+import cljtest.multi.MultiTests;
 import jstest.Engine;
 import jstest.Language;
 
@@ -23,6 +24,7 @@ public class ClojureObjectExpressionTest extends ClojureFunctionalExpressionTest
             .rename("negate", "Negate");
 
     public static final double D = 1e-4;
+    private static final ClojureScript.F<String> TO_STRING = ClojureScript.function("toString", String.class);
 
     protected ClojureObjectExpressionTest(final Language language) {
         super(language, Optional.of("evaluate"));
@@ -44,11 +46,12 @@ public class ClojureObjectExpressionTest extends ClojureFunctionalExpressionTest
         testToString(addSpaces(parsed, random), unparsed);
     }
 
-    private void testToString(final String expression, final String expected) {
+    protected void testToString(final String expression, final String expected) {
         engine.parse(expression);
-        final Engine.Result<String> result = engine.parsedToString();
+        final Engine.Result<String> result = engine.toString(TO_STRING);
         assertEquals(result.context, expected, result.value);
     }
+
     @Override
     protected void test() {
         super.test();
@@ -59,7 +62,7 @@ public class ClojureObjectExpressionTest extends ClojureFunctionalExpressionTest
         }
     }
 
-    private void testDiff(final Expr<TExpr> test, final String expression) {
+    protected void testDiff(final Expr<TExpr> test, final String expression) {
         for (int variable = 0; variable < 3; variable++) {
             final String value = "(diff " + expression + " \"" + "xyz".charAt(variable) + "\")";
             System.out.println("Testing: " + value);

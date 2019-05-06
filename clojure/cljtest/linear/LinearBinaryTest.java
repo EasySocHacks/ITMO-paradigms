@@ -20,7 +20,7 @@ public class LinearBinaryTest extends BaseTest {
         ClojureScript.loadScript("linear.clj");
     }
 
-    public static final ClojureScript.F<IPersistentVector> VECTOR = vectorFunction("vector");
+    public static final ClojureScript.F<IPersistentVector> VECTOR = vectorFunction("clojure.core/vector");
 
     public static final ClojureScript.F<IPersistentVector> V_ADD = vectorFunction("v+");
     public static final ClojureScript.F<IPersistentVector> V_SUB = vectorFunction("v-");
