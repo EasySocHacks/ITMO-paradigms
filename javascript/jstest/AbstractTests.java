@@ -21,6 +21,7 @@ public abstract class AbstractTests implements Cloneable {
     private final Map<String, TExpr> nullary = new HashMap<>();
     private final List<AbstractExpression> variables = new ArrayList<>();
 
+    private final Map<String, Integer> variableNames = new HashMap<>();
     private final List<String> operatorNames = new ArrayList<>();
     private final List<String> nullaryNames = new ArrayList<>();
 
@@ -124,6 +125,7 @@ public abstract class AbstractTests implements Cloneable {
     protected AbstractExpression variable(final String name, final int index) {
         final AbstractExpression variable = (parsed, unparsed) -> expr(parsed.variable(name), unparsed.variable(name), vars -> vars[index]);
         variables.add(variable);
+        variableNames.put(name, index);
         return variable;
     }
 
@@ -137,5 +139,9 @@ public abstract class AbstractTests implements Cloneable {
 
     public List<AbstractExpression> getVariables() {
         return variables;
+    }
+
+    public Map<String, Integer> getVariableNames() {
+        return variableNames;
     }
 }
