@@ -32,7 +32,7 @@ public class TestCounter {
         passed++;
     }
 
-    public void printStatus(final Class<?> clazz) {
+    public void printStatus(final Class<?> clazz, final String... messages) {
         System.out.flush();
         System.err.println("===========================================");
         System.err.format("Test run: %d, passed: %d, failed: %d%n", total, passed, total - passed);
@@ -42,6 +42,9 @@ public class TestCounter {
             System.exit(1);
         }
         System.err.println("Version: " + clazz.getSimpleName() + ", " + getVersion(clazz));
+        for (final String message : messages) {
+            System.err.println(message);
+        }
     }
 
 

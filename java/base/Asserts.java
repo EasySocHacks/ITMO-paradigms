@@ -37,7 +37,11 @@ public class Asserts {
 
     public static void checkAssert(final Class<?> c) {
         if (!c.desiredAssertionStatus()) {
-            throw new AssertionError("You should enable assertions by running 'java -ea " + c.getName() + "'");
+            throw error("You should enable assertions by running 'java -ea %s'", c.getName());
         }
+    }
+
+    public static AssertionError error(final String format, final Object... args) {
+        return new AssertionError(String.format(format, args));
     }
 }

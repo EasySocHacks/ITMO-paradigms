@@ -3,6 +3,34 @@
 [Условия домашних заданий](http://www.kgeorgiy.info/courses/paradigms/homeworks.html)
 
 
+## Домашнее задание 11. Ассоциативные массивы на Prolog
+
+Модификации
+ * *Простая*
+    * Код должен находиться в файле `sorted-list-map.pl`.
+    * [Исходный код тестов](prolog/prtest/list/PrologListTest.java)
+        * Запускать c аргументом `sorted`
+ * *Сложная*
+    * Код должен находиться в файле `tree-map.pl`.
+    * [Исходный код тестов](prolog/prtest/tree/PrologTreeTest.java)
+        * Запускать c аргументом `hard` или `bonus`
+
+
+## Исходный код к лекциям по Prolog
+
+Запуск Prolog
+ * [Windows](prolog/RunProlog.cmd)
+ * [*nix](prolog/RunProlog.sh)
+
+Лекция 1. Введение в пролог
+ * [Учебный план](prolog/examples/1_plan.pl)
+ * [Вычисления](prolog/examples/2_calc.pl)
+ * [Списки](prolog/examples/3_lists.pl)
+ * [Задача о расстановке ферзей](prolog/examples/4_queens.pl)
+ * [Загадка Эйнштейна](prolog/examples/5_einstein.pl)
+ * [Арифметические выражения](prolog/examples/6_expressions.pl)
+
+
 ## Домашнее задание 10. Комбинаторные парсеры
 Модификации
  * *Базовая*
@@ -20,6 +48,16 @@
         * `Log` (`//`) – взятия логарифма:
             `8 // 9 // 3` равно `8 // (9 // 3)` равно 3
     * [Исходный код тестов](clojure/cljtest/parsing/ClojurePowLogParsingTest.java)
+ * *Bitwise*. Дополнительно реализовать поддержку:
+    * Побитовых операций
+        * `And` (`&`) – и: `5 & 6` равно 4
+        * `Or` (`|`) - или: `5 & 6` равно 7
+        * `Xor` (`^`) - исключающее: `5 ^ 6` примерно равно 1.66881E-308
+        * для реализации операций используйте
+            [doubleToLongBits](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html#doubleToLongBits(double))
+            и [longBitsToDouble](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Double.html#longBitsToDouble(long))
+        * операции по увеличиению приоритета: `^`, `|`, `&`, `+` и `-`, `*` и `/`
+    * [Исходный код тестов](clojure/cljtest/parsing/ClojureBitwiseParsingTest.java)
 
 
 ## Домашнее задание 9. Объектные выражения на Clojure
