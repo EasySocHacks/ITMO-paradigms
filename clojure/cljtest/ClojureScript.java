@@ -94,7 +94,7 @@ public class ClojureScript {
                     f,
                     Arrays.stream(args).map(arg -> arg.value).toArray(),
                     type,
-                    "(" + name + " " + Arrays.stream(args).map(arg -> arg.value.toString()).collect(Collectors.joining(" ")) + ")"
+                    "(" + name + " " + Arrays.stream(args).map(arg -> arg.context).collect(Collectors.joining(" ")) + ")"
             );
         }
 
@@ -102,7 +102,7 @@ public class ClojureScript {
             return ClojureScript.expectException(
                     f,
                     Arrays.stream(args).map(arg -> arg.value).toArray(),
-                    "(" + name + " " + Arrays.stream(args).map(arg -> arg.value.toString()).collect(Collectors.joining(" ")) + ")"
+                    "(" + name + " " + Arrays.stream(args).map(arg -> arg.context).collect(Collectors.joining(" ")) + ")"
             );
         }
     }

@@ -25,7 +25,7 @@ public class ClojureEngine implements Engine {
 
     @Override
     public void parse(final String expression) {
-        parsed = new Result<>("\"" + expression + "\"", ClojureScript.LOAD_STRING_IN.invoke(expression));
+        parsed = new Result<>(expression, ClojureScript.LOAD_STRING_IN.invoke(expression));
         this.expression = expression;
     }
 
